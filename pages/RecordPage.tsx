@@ -2,12 +2,21 @@ import React from "react";
 import { Link, useParams } from "react-router-dom";
 import { Breadcrumb } from "../Breadcrumb";
 
+const poemTypeStyles = `
+@import url('https://fonts.googleapis.com/css2?family=Forum&display=swap');
+.poetry-reading-page { background:radial-gradient(ellipse at 85% 0%,#242b2c 0%,#101416 35%,#080a0b 75%);color:#deded8;min-height:100vh; }
+.poetry-reading-page .page-content { max-width:900px; }
+.poetry-reading-page h1 { font-family:'Forum',Georgia,serif !important;font-weight:400 !important;font-size:clamp(3rem,7vw,5.8rem);line-height:1.06;letter-spacing:.015em; }
+.poetry-reading-page .record-poem { font-family:'Forum',Georgia,serif;font-size:clamp(1.3rem,2.1vw,1.65rem);line-height:1.7 !important;max-width:700px;color:#e0e0da;border:0;padding:1rem 0; }
+.poetry-reading-page .archive-note { background:transparent !important;border-left:0 !important;border-right:0 !important;border-top:1px solid #414748;border-bottom:0 !important;box-shadow:none !important; }
+.poetry-reading-page .record-subtitle { letter-spacing:.17em; }
+`;
 export function RecordPage() {
   const { id } = useParams();
 
   if (id === "009") {
     return (
-      <section className="page-section">
+      <section className="page-section poetry-reading-page">\n        <style>{poemTypeStyles}</style>
         <div className="page-content">
           <Breadcrumb items={[{ label: "Archive", to: "/archive" }, { label: "Manuscripts", to: "/manuscripts" }, { label: "The Hands of Those Dying" }]} />
           <p className="eyebrow">ORIGINAL POEM // 009</p>
@@ -36,7 +45,7 @@ export function RecordPage() {
 
   if (id === "010") {
     return (
-      <section className="page-section">
+      <section className="page-section poetry-reading-page">\n        <style>{poemTypeStyles}</style>
         <div className="page-content">
           <Breadcrumb items={[{ label: "Archive", to: "/archive" }, { label: "Manuscripts", to: "/manuscripts" }, { label: "Nerves of a Harp" }]} />
           <p className="eyebrow">ORIGINAL POEM // 010</p>
@@ -65,7 +74,7 @@ export function RecordPage() {
 
   if (id === "001") {
     return (
-      <section className="page-section">
+      <section className="page-section poetry-reading-page">\n        <style>{poemTypeStyles}</style>
         <div className="page-content">
           <Breadcrumb items={[{ label: "Archive", to: "/archive" }, { label: "Manuscripts", to: "/manuscripts" }, { label: "Forevermore" }]} />
           <p className="eyebrow">RECOVERED POEM // 001</p>
@@ -111,7 +120,7 @@ Remain in peacefulness`}
 
   if (id === "002") {
     return (
-      <section className="page-section">
+      <section className="page-section poetry-reading-page">\n        <style>{poemTypeStyles}</style>
         <div className="page-content">
           <Breadcrumb items={[{ label: "Archive", to: "/archive" }, { label: "Manuscripts", to: "/manuscripts" }, { label: "Angel of Death" }]} />
           <p className="eyebrow">RECOVERED POEM // 002</p>
@@ -160,7 +169,7 @@ Is what's calling me`}
 
   if (id === "003") {
     return (
-      <section className="page-section">
+      <section className="page-section poetry-reading-page">\n        <style>{poemTypeStyles}</style>
         <div className="page-content">
           <Breadcrumb items={[{ label: "Archive", to: "/archive" }, { label: "Manuscripts" }, { label: "Agony" }]} />
           <p className="eyebrow">RECOVERED POEM // 003</p>
@@ -211,7 +220,7 @@ Pleading in Agony`}
 
   if (id === "004") {
     return (
-      <section className="page-section">
+      <section className="page-section poetry-reading-page">\n        <style>{poemTypeStyles}</style>
         <div className="page-content">
           <Breadcrumb items={[{ label: "Archive", to: "/archive" }, { label: "Manuscripts" }, { label: "Embers" }]} />
           <p className="eyebrow">RECOVERED POEM // 004</p>
@@ -275,7 +284,7 @@ The embers in your flame.`}
 
   if (id === "005") {
     return (
-      <section className="page-section">
+      <section className="page-section poetry-reading-page">\n        <style>{poemTypeStyles}</style>
         <div className="page-content">
           <Breadcrumb items={[{ label: "Archive", to: "/archive" }, { label: "Manuscripts" }, { label: "Record 005" }]} />
           <p className="eyebrow">RECOVERED RECORD // 005</p>
@@ -296,7 +305,7 @@ The embers in your flame.`}
 
   if (id === "006") {
     return (
-      <section className="page-section">
+      <section className="page-section poetry-reading-page">\n        <style>{poemTypeStyles}</style>
         <div className="page-content">
           <Breadcrumb items={[{ label: "Archive", to: "/archive" }, { label: "Manuscripts" }, { label: "Record 006" }]} />
           <p className="eyebrow">RECOVERED RECORD // 006</p>
@@ -317,7 +326,7 @@ The embers in your flame.`}
 
   if (id === "007") {
     return (
-      <section className="page-section">
+      <section className="page-section poetry-reading-page">\n        <style>{poemTypeStyles}</style>
         <div className="page-content">
           <Breadcrumb items={[{ label: "Archive", to: "/archive" }, { label: "Manuscripts" }, { label: "Record 007" }]} />
           <p className="eyebrow">RECOVERED RECORD // 007</p>
@@ -338,7 +347,7 @@ The embers in your flame.`}
 
   if (id === "008") {
     return (
-      <section className="page-section">
+      <section className="page-section poetry-reading-page">\n        <style>{poemTypeStyles}</style>
         <div className="page-content">
           <Breadcrumb items={[{ label: "Archive", to: "/archive" }, { label: "Manuscripts" }, { label: "Founding Edition" }]} />
           <p className="eyebrow">RECOVERED FRAGMENT // 008</p>
@@ -380,7 +389,7 @@ The embers in your flame.`}
   }
 
   return (
-    <section className="page-section">
+    <section className="page-section poetry-reading-page">\n        <style>{poemTypeStyles}</style>
       <div className="page-content">
         <Breadcrumb items={[{ label: "Archive", to: "/archive" }, { label: "Manuscripts" }, { label: `Record ${id}` }]} />
         <p className="eyebrow">ARCHIVE RECORD</p>
