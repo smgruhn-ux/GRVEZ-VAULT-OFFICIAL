@@ -4,6 +4,20 @@ import { Breadcrumb } from "../Breadcrumb";
 
 const restoredRecords = [
   {
+    id: "009",
+    type: "ORIGINAL POEM",
+    title: "The Hands of Those Dying",
+    preview: "\"Is it the hands\nOf those dying \nOr of those who've...\"",
+    source: "Sheldyn Gruhn · October 20, 2026",
+  },
+  {
+    id: "010",
+    type: "ORIGINAL POEM",
+    title: "Nerves of a Harp",
+    preview: "\"I have nerves of a harp\nPlucked and pulled \n...\"",
+    source: "Sheldyn Gruhn · October 22, 2026",
+  },
+  {
     id: "001",
     type: "RECOVERED POEM",
     title: "Forevermore",
