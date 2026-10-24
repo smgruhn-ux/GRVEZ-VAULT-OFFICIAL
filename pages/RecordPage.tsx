@@ -5,6 +5,64 @@ import { Breadcrumb } from "../Breadcrumb";
 export function RecordPage() {
   const { id } = useParams();
 
+  if (id === "009") {
+    return (
+      <section className="page-section">
+        <div className="page-content">
+          <Breadcrumb items={[{ label: "Archive", to: "/archive" }, { label: "Manuscripts", to: "/manuscripts" }, { label: "The Hands of Those Dying" }]} />
+          <p className="eyebrow">ORIGINAL POEM // 009</p>
+          <h1>The Hands of Those Dying</h1>
+          <p className="record-subtitle">CONTEMPORARY POETRY · SHELDYN GRUHN</p>
+          <section className="archive-note">
+            <p className="eyebrow">POEM DETAILS</p>
+            <p><strong>Writer:</strong> Sheldyn Gruhn</p>
+            <p><strong>Date Written:</strong> October 20, 2026</p>
+            <p><strong>Document Type:</strong> Original Poem</p>
+          </section>
+          <section className="archive-note">
+            <p className="eyebrow">FULL TEXT</p>
+            <blockquote className="record-poem" style={{ whiteSpace: "pre-wrap", lineHeight: 2 }}>
+{"Is it the hands\nOf those dying \nOr of those who've\nAlready gone\n\nAn undying requiem \nThey must await\nTo ease the souls of those\nPrying around me at my feet\n\nOr an empty choir\nThat refuses to \nLet me go \nUntil they hollow out \nevery one of my bones\n\nSo hollow I’d rather have static wires \nTearing through my veins \nDraining me cold of my own blood\nThan succumb to my own decay\n\nAt last I fall\nJust for those dying to feel\nTheir justice is dancing\nAround my lifeless flesh \nWith their violins using my cold \nAnd limber hands"}
+            </blockquote>
+          </section>
+          <div className="record-nav">
+            <Link to="/manuscripts">{"\\u2190"} All Manuscripts</Link>
+            <Link to="/record/010">Nerves of a Harp {"\\u2192"}</Link>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  if (id === "010") {
+    return (
+      <section className="page-section">
+        <div className="page-content">
+          <Breadcrumb items={[{ label: "Archive", to: "/archive" }, { label: "Manuscripts", to: "/manuscripts" }, { label: "Nerves of a Harp" }]} />
+          <p className="eyebrow">ORIGINAL POEM // 010</p>
+          <h1>Nerves of a Harp</h1>
+          <p className="record-subtitle">CONTEMPORARY POETRY · SHELDYN GRUHN</p>
+          <section className="archive-note">
+            <p className="eyebrow">POEM DETAILS</p>
+            <p><strong>Writer:</strong> Sheldyn Gruhn</p>
+            <p><strong>Date Written:</strong> October 22, 2026</p>
+            <p><strong>Document Type:</strong> Original Poem</p>
+          </section>
+          <section className="archive-note">
+            <p className="eyebrow">FULL TEXT</p>
+            <blockquote className="record-poem" style={{ whiteSpace: "pre-wrap", lineHeight: 2 }}>
+{"I have nerves of a harp\nPlucked and pulled \n\nAs if being morally corrupt \nIs something to do \nAnd I’m the lucky one \nBeing played for a fool \n\nThe only fool I see \nIs one who’s playing a harp \nThey mistook for a fiddle\n\nFiddle me this we’ll see \nAnd I’ll see that your fingers bleed\n\nYou mustn’t know a mirror from a wall\nTherefore I’m not here at your beck and call\nMy strings are not for foolish play\n\nPick and pluck me away\nTill I snap and slash your face \n\nStrum me \nTill I come unstrung \nThen you’ll never want to \nString me back up"}
+            </blockquote>
+          </section>
+          <div className="record-nav">
+            <Link to="/manuscripts">{"\\u2190"} All Manuscripts</Link>
+            <Link to="/record/009">The Hands of Those Dying {"\\u2192"}</Link>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   if (id === "001") {
     return (
       <section className="page-section">
