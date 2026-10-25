@@ -48,8 +48,23 @@ const restoredRecords = [
 ];
 
 const poetry = [...restoredRecords].sort((a,b) => Number(a.id) - Number(b.id));
+const featured = restoredRecords.slice(0, 2);
 
 const stormStyles = `
+.manuscripts-reimagined .storm-hero { background:linear-gradient(180deg,rgba(6,9,11,.18),rgba(6,9,11,.65)),url('/manuscripts-hero.jpg') center 47% / cover no-repeat; }
+.manuscripts-reimagined .storm-hero:before { opacity:.42; }
+.manuscripts-reimagined .storm-hero:after { opacity:.5; }
+.manuscripts-reimagined .featured-grid { display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.25rem;margin:2rem 0 5rem; }
+.manuscripts-reimagined .featured-card { display:flex;flex-direction:column;justify-content:end;min-height:290px;position:relative;overflow:hidden;padding:2.2rem;background:linear-gradient(150deg,#242c30,#0b0f11 70%);border:1px solid #495154;text-decoration:none;color:#e0ded8;transition:transform .25s,border-color .25s; }
+.manuscripts-reimagined .featured-card:nth-child(2) {background:radial-gradient(ellipse at 72% 20%,#34373b,#111416 65%);}
+.manuscripts-reimagined .featured-card:hover,.manuscripts-reimagined .featured-card:focus-visible {transform:translateY(-4px);border-color:#b2b8b7;}
+.manuscripts-reimagined .featured-card:before {content:"";position:absolute;top:1.5rem;right:1.5rem;width:34%;height:55%;border:1px solid rgba(209,213,210,.14);transform:rotate(-8deg);pointer-events:none;}
+.manuscripts-reimagined .featured-card h3 {font:400 clamp(2rem,4vw,3.5rem)/1.05 'Forum',Georgia,serif;margin:1.2rem 0;}
+.manuscripts-reimagined .featured-card p {font:400 1.15rem/1.5 'Forum',Georgia,serif;white-space:pre-line;color:#b7c0bf;margin:0 0 1.5rem;}
+.manuscripts-reimagined .featured-card .read-label {font-size:.68rem;letter-spacing:.22em;}
+.manuscripts-reimagined .collection-intro {margin:0 0 1.5rem;color:#aeb6b5;font-family:'Forum',Georgia,serif;font-size:1.25rem;}
+@media(max-width:700px){.manuscripts-reimagined .featured-grid{grid-template-columns:1fr}.manuscripts-reimagined .featured-card{min-height:240px;padding:1.6rem}.manuscripts-reimagined .storm-hero{background-position:57% center}}
+
 @import url('https://fonts.googleapis.com/css2?family=Forum&display=swap');
 .manuscripts-reimagined { --ink:#080a0b; --silver:#e0ded8; --muted:#a9aba8; background:var(--ink); color:var(--silver); position:relative; overflow:hidden; }
 .manuscripts-reimagined .page-content { max-width:1180px; position:relative; z-index:1; }
@@ -91,11 +106,23 @@ export function ManuscriptsPage() {
           <p className="storm-subtitle">Poetry &amp; Manuscripts</p>
           <p className="storm-aside">A place for the words that remain when everything else falls silent.</p>
         </header>
+        <section aria-labelledby="featured-heading">
+          <div className="literary-heading"><div><p className="literary-label">Selected writing / 2026</p><h2 id="featured-heading" className="literary-title">Featured Works</h2></div></div>
+          <div className="featured-grid">{featured.map(record => (
+            <Link className="featured-card" key={record.id} to={`/record/${record.id}`}>
+              <span className="literary-label">Original poem / {record.id}</span>
+              <h3>{record.title}</h3>
+              <p>{record.preview.replaceAll('"','').replace(/\.\.\.$/,'…')}</p>
+              <span className="read-label">ENTER THE WORK ↗</span>
+            </Link>
+          ))}</div>
+        </section>
         <section aria-labelledby="poetry-heading" className="poem-list">
           <div className="literary-heading">
             <div><p className="literary-label">The collection</p><h2 id="poetry-heading" className="literary-title">Original Poetry</h2></div>
             <p className="literary-label">Written by Sheldyn Gruhn</p>
           </div>
+          <p className="collection-intro">Every piece, preserved in its own words.</p>
           {poetry.map(record => (
             <Link key={record.id} className="poem-row" to={`/record/${record.id}`}>
               <span className="poem-number">{record.id}</span>
