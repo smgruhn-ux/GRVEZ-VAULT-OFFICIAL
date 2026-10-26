@@ -4,6 +4,13 @@ import { Breadcrumb } from "../Breadcrumb";
 
 const restoredRecords = [
   {
+    id: "011",
+    type: "ORIGINAL POEM",
+    title: "Threads of a Rope",
+    preview: "My limbs feel like threads of a rope\nSome tugged and worn\nOthers set on fire…",
+    source: "Sheldyn Gruhn · October 26, 2026",
+  },
+  {
     id: "009",
     type: "ORIGINAL POEM",
     title: "The Hands of Those Dying",
@@ -48,13 +55,13 @@ const restoredRecords = [
 ];
 
 const poetry = [...restoredRecords].sort((a,b) => Number(a.id) - Number(b.id));
-const featured = restoredRecords.slice(0, 2);
+const featured = restoredRecords.slice(0, 3);
 
 const stormStyles = `
 .manuscripts-reimagined .storm-hero { background:linear-gradient(180deg,rgba(6,9,11,.18),rgba(6,9,11,.65)),url('/manuscripts-hero.jpg') center 47% / cover no-repeat; }
 .manuscripts-reimagined .storm-hero:before { opacity:.42; }
 .manuscripts-reimagined .storm-hero:after { opacity:.5; }
-.manuscripts-reimagined .featured-grid { display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.25rem;margin:2rem 0 5rem; }
+.manuscripts-reimagined .featured-grid { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.25rem;margin:2rem 0 5rem; }
 .manuscripts-reimagined .featured-card { display:flex;flex-direction:column;justify-content:end;min-height:290px;position:relative;overflow:hidden;padding:2.2rem;background:linear-gradient(150deg,#242c30,#0b0f11 70%);border:1px solid #495154;text-decoration:none;color:#e0ded8;transition:transform .25s,border-color .25s; }
 .manuscripts-reimagined .featured-card:nth-child(2) {background:radial-gradient(ellipse at 72% 20%,#34373b,#111416 65%);}
 .manuscripts-reimagined .featured-card:hover,.manuscripts-reimagined .featured-card:focus-visible {transform:translateY(-4px);border-color:#b2b8b7;}
