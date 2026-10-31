@@ -36,12 +36,133 @@
       }
     }
     </script>
+    <style>
+      /* MURMUR: custom launcher avoids the white surround in Zapier's pop-up. */
+      #murmur-launcher {
+        position: fixed;
+        right: max(16px, env(safe-area-inset-right));
+        bottom: calc(20px + env(safe-area-inset-bottom));
+        z-index: 2147483000;
+        display: grid;
+        place-items: center;
+        width: 52px;
+        height: 52px;
+        padding: 0;
+        border: 1px solid #4b4d56;
+        border-radius: 10px;
+        background: #090a0d;
+        color: #d6d9e0;
+        box-shadow: 0 6px 22px rgba(0,0,0,.48);
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+      }
+      #murmur-launcher:hover, #murmur-launcher:focus-visible {
+        border-color: #a3aab5;
+        outline-offset: 3px;
+      }
+      #murmur-launcher .murmur-glyph {
+        font: normal 34px/1 Georgia, "Times New Roman", serif;
+        letter-spacing: -.075em;
+        padding-right: .075em;
+        background: linear-gradient(115deg, #eef0f3 0%, #a8abb2 42%, #f2f2f3 64%, #747982 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      #murmur-window[hidden] { display: none !important; }
+      #murmur-window {
+        position: fixed;
+        right: max(12px, env(safe-area-inset-right));
+        bottom: calc(82px + env(safe-area-inset-bottom));
+        z-index: 2147483000;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        width: min(400px, calc(100vw - 24px));
+        height: min(610px, calc(100dvh - 125px));
+        min-height: 250px;
+        border: 1px solid #3f434d;
+        border-radius: 12px;
+        background: #08090c;
+        box-shadow: 0 16px 55px rgba(0,0,0,.75);
+      }
+      #murmur-window .murmur-window-top {
+        box-sizing: border-box;
+        flex: 0 0 45px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 12px 0 18px;
+        background: #0d0f13;
+        border-bottom: 1px solid #30333b;
+      }
+      #murmur-window .murmur-window-name {
+        font: normal 12px/1.2 Georgia, "Times New Roman", serif;
+        letter-spacing: .22em;
+        color: #d5d8df;
+      }
+      #murmur-close {
+        display: grid;
+        place-items: center;
+        width: 36px;
+        height: 36px;
+        border: none;
+        background: transparent;
+        color: #c9cbd0;
+        font-size: 27px;
+        cursor: pointer;
+      }
+      #murmur-close:focus-visible { outline: 1px solid #a3aab5; }
+      #murmur-window zapier-interfaces-chatbot-embed {
+        display: block;
+        flex: 1 1 auto;
+        min-height: 0;
+        width: 100%;
+        height: 100%;
+        background: #08090c;
+      }
+      @media (max-width: 480px) {
+        #murmur-window {
+          width: calc(100vw - 24px);
+          height: min(640px, calc(100dvh - 125px));
+        }
+      }
+    </style>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/main.tsx"></script>
-    <!-- MURMUR: GRVEZ VAULT chatbot (Zapier pop-up) -->
-    <script async type='module' src='https://interfaces.zapier.com/assets/web-components/zapier-interfaces/zapier-interfaces.esm.js'></script>
-    <zapier-interfaces-chatbot-embed is-popup='true' chatbot-id='cmvvyl4eh0028u9h3de35wo30'></zapier-interfaces-chatbot-embed>
+    <!-- MURMUR: custom GRVEZ VAULT launcher and inline Zapier chatbot -->
+    <script async type="module" src="https://interfaces.zapier.com/assets/web-components/zapier-interfaces/zapier-interfaces.esm.js"></script>
+    <button id="murmur-launcher" type="button" aria-label="Open MURMUR chat" aria-controls="murmur-window" aria-expanded="false" title="Talk to MURMUR">
+      <span class="murmur-glyph" aria-hidden="true">M</span>
+    </button>
+    <aside id="murmur-window" role="dialog" aria-label="MURMUR chat" hidden>
+      <div class="murmur-window-top">
+        <span class="murmur-window-name">MURMUR</span>
+        <button id="murmur-close" type="button" aria-label="Close MURMUR chat">&times;</button>
+      </div>
+      <zapier-interfaces-chatbot-embed is-popup="false" chatbot-id="cmvvyl4eh0028u9h3de35wo30" height="100%" width="100%"></zapier-interfaces-chatbot-embed>
+    </aside>
+    <script>
+      (() => {
+        const launch = document.getElementById('murmur-launcher');
+        const panel = document.getElementById('murmur-window');
+        const close = document.getElementById('murmur-close');
+        const setOpen = (open) => {
+          panel.hidden = !open;
+          launch.setAttribute('aria-expanded', String(open));
+          launch.setAttribute('aria-label', open ? 'MURMUR chat is open' : 'Open MURMUR chat');
+          if (open) close.focus();
+          else launch.focus();
+        };
+        launch.addEventListener('click', () => setOpen(panel.hidden));
+        close.addEventListener('click', () => setOpen(false));
+        document.addEventListener('keydown', (event) => {
+          if (event.key === 'Escape' && !panel.hidden) setOpen(false);
+        });
+      })();
+    </script>
   </body>
 </html>
