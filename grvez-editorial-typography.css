@@ -1,0 +1,66 @@
+/* GRVEZ VAULT editorial typography
+   Regular body: Cinzel 400.
+   Headings: Felix Titling (when locally licensed/installed), with Cinzel 400
+   as the supported web fallback. Do not redistribute Felix without a license.
+   CSS text transformation does not alter original manuscript content. */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400&display=swap');
+
+:root {
+  --grvez-body-face: 'Cinzel', Georgia, serif;
+  --grvez-title-face: 'Felix Titling', 'Cinzel', Georgia, serif;
+}
+
+body:not(.after-dark-active) {
+  font-family: var(--grvez-body-face);
+  font-weight: 400;
+}
+
+/* Apply the requested body face even where legacy pages set Forum,
+   Inter, or Georgia independently. Preserve sizing, spacing, and layout. */
+body:not(.after-dark-active) #root :is(
+  p, li, blockquote, dd, dt, figcaption, label, input, textarea,
+  select, button, small, .record-poem, .poem-excerpt,
+  .poem-number, .collection-intro, .storm-aside, .featured-card p
+) {
+  font-family: var(--grvez-body-face) !important;
+}
+
+/* Covers structural headings and the custom title classes used throughout
+   the GRVEZ archive. Uppercase visually; never rewrite poetry text. */
+body:not(.after-dark-active) #root :is(
+  h1, h2, h3, h4, h5, h6,
+  .storm-title, .literary-title, .hero-title, .page-title,
+  .section-title, .record-title, .card-title, .feature-title,
+  .archive-title
+) {
+  font-family: var(--grvez-title-face) !important;
+  font-weight: 400 !important;
+  font-style: normal !important;
+  text-transform: uppercase !important;
+}
+
+/* The original poem and excerpt text stays in its authored case. */
+body:not(.after-dark-active) #root :is(.record-poem, .poem-excerpt, .featured-card p) {
+  text-transform: none !important;
+}
+
+/* Uppercase Felix-style headings are wider than mixed-case Forum titles.
+   Keep the manuscript pages readable within narrow phone screens. */
+@media (max-width: 700px) {
+  body:not(.after-dark-active) #root .manuscripts-reimagined .storm-title {
+    font-size: clamp(2.7rem, 11vw, 4.8rem) !important;
+    line-height: 1.04 !important;
+  }
+  body:not(.after-dark-active) #root .manuscripts-reimagined .literary-title {
+    font-size: clamp(1.85rem, 7.6vw, 3rem) !important;
+    line-height: 1.12 !important;
+  }
+  body:not(.after-dark-active) #root .manuscripts-reimagined .featured-card h3 {
+    font-size: clamp(1.75rem, 6.4vw, 3rem) !important;
+    line-height: 1.12 !important;
+  }
+  body:not(.after-dark-active) #root .poetry-reading-page h1 {
+    font-size: clamp(2.1rem, 8.3vw, 3.9rem) !important;
+    line-height: 1.12 !important;
+  }
+}
