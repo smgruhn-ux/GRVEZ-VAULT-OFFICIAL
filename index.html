@@ -79,14 +79,20 @@
         border-color: #a3aab5;
         outline-offset: 3px;
       }
-      #murmur-launcher .murmur-glyph {
-        font: normal 34px/1 Georgia, "Times New Roman", serif;
-        letter-spacing: -.075em;
-        padding-right: .075em;
-        background: linear-gradient(115deg, #eef0f3 0%, #a8abb2 42%, #f2f2f3 64%, #747982 100%);
-        -webkit-background-clip: text;
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
+      #murmur-launcher .murmur-raven {
+        display: block;
+        width: 39px;
+        height: 39px;
+        overflow: visible;
+        color: #cdd1d9;
+        pointer-events: none;
+      }
+      #murmur-launcher .murmur-raven .raven-feather {
+        fill: none;
+        stroke: #515c69;
+        stroke-width: 1.35;
+        stroke-linecap: round;
+        opacity: .85;
       }
       #murmur-window[hidden] { display: none !important; }
       #murmur-window {
@@ -155,7 +161,19 @@
     <!-- MURMUR: custom GRVEZ VAULT launcher and inline Zapier chatbot -->
     <script async type="module" src="https://interfaces.zapier.com/assets/web-components/zapier-interfaces/zapier-interfaces.esm.js"></script>
     <button id="murmur-launcher" type="button" aria-label="Open MURMUR chat" aria-controls="murmur-window" aria-expanded="false" title="Talk to MURMUR">
-      <span class="murmur-glyph" aria-hidden="true">M</span>
+      <svg class="murmur-raven" viewBox="0 0 64 64" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="murmur-raven-silver" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#eef0f3" />
+            <stop offset=".48" stop-color="#b2b8c2" />
+            <stop offset="1" stop-color="#6f7884" />
+          </linearGradient>
+        </defs>
+        <path fill="url(#murmur-raven-silver)" d="M14 58c5-7 8-13 7-18-5-4-8-9-8-16 0-8 5-14 12-16 9-3 18 2 21 12l14 5-12 5c-1 7-5 12-10 15 1 4 5 9 10 13l-11-3-5 6-5-7-13 4z"/>
+        <path class="raven-feather" d="M22 39c5 2 11 1 15-2M24 44c4 1 8 0 11-2M20 47l5-3"/>
+        <circle cx="37" cy="20" r="1.65" fill="#0b0e12"/>
+        <path d="M47 25l10 1-10 3" fill="#6f7884" opacity=".75"/>
+      </svg>
     </button>
     <aside id="murmur-window" role="dialog" aria-label="MURMUR chat" hidden>
       <div class="murmur-window-top">
