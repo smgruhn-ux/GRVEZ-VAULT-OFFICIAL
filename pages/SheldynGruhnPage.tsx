@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Breadcrumb } from "../Breadcrumb";
 
 const poems = [
+  { id: "011", title: "Threads of a Rope", date: "October 25, 2026", description: "Original poetry · Written Ruins" },
   { id: "010", title: "Nerves of a Harp", date: "October 22, 2026", description: "Original poetry · Written Ruins" },
   { id: "009", title: "The Hands of Those Dying", date: "October 20, 2026", description: "Original poetry · Written Ruins" },
   { id: "004", title: "Embers", date: "April 23, 2025", description: "Early poetry archive" },
