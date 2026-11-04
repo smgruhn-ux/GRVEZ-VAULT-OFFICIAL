@@ -29,6 +29,7 @@ const PAGE_TITLES: Record<string, string> = {
   '/music': 'Music | GRVEZ VAULT',
   '/archive': 'The Archive | GRVEZ VAULT',
   '/manuscripts': 'Manuscripts | GRVEZ VAULT',
+  '/poetry': 'Sheldyn Gruhn | Poetry & Written Ruins | GRVEZ VAULT',
   '/media': 'Visual Documentation | GRVEZ VAULT',
   '/relational-continuity': 'Relational Continuity Hypothesis | GRVEZ VAULT',
   '/films': 'Films & Media | GRVEZ VAULT',
@@ -181,6 +182,7 @@ export function Layout({ children }: LayoutProps) {
             <li><Link to="/music">Music</Link></li>
             <li><Link to="/archive">Archive</Link></li>
             <li><Link to="/manuscripts">Manuscripts</Link></li>
+            <li><Link to="/poetry">Sheldyn Gruhn · Poetry</Link></li>
             <li><Link to="/relational-continuity">Relational Continuity</Link></li>
             <li><Link to="/films">Films & Media</Link></li>
             <li><Link to="/vaultline">Vaultline</Link></li>
