@@ -14,6 +14,36 @@ const poemTypeStyles = `
 export function RecordPage() {
   const { id } = useParams();
 
+  if (id === "011") {
+    return (
+      <section className="page-section poetry-reading-page">
+        <style>{poemTypeStyles}</style>
+        <div className="page-content">
+          <Breadcrumb items={[{ label: "Archive", to: "/archive" }, { label: "Sheldyn Gruhn", to: "/poetry" }, { label: "Threads of a Rope" }]} />
+          <p className="eyebrow">ORIGINAL POEM // 011</p>
+          <h1>Threads of a Rope</h1>
+          <p className="record-subtitle">WRITTEN RUINS · SHELDYN GRUHN</p>
+          <section className="archive-note">
+            <p className="eyebrow">POEM DETAILS</p>
+            <p><strong>Writer:</strong> Sheldyn Gruhn</p>
+            <p><strong>Date Written:</strong> October 25, 2026</p>
+            <p><strong>Document Type:</strong> Original Poem</p>
+          </section>
+          <section className="archive-note">
+            <p className="eyebrow">FULL TEXT</p>
+            <blockquote className="record-poem" style={{ whiteSpace: "pre-wrap", lineHeight: 2 }}>
+              {"My limbs feel like threads of a rope\nSome tugged and worn\nOthers set on fire\nAs my flesh starts to smoulder\n\nThe fire pulls me close\nTo cool me down\nSo the pain I feel\nWill finally burn out\n\nThen mocks me\nFor mistaking its flames\nFor an embrace\nIt holds me down\nTo string barbed wire through my veins\n\nThe threads of the rope start to fray\n\nThe ground gives out\nAs the rope gives way\nMy voice calls for help\nBut nothing comes out\n\nI plummet through the smoke\nAnd think, my oh my\nIs this what it’s like\nTo feel myself burn alive?\n\nThe threads that once cinched my throat\nHave surrendered to the fire’s reign\nIgniting my eyes\nNow I can’t see\nThe smoke or the blaze\n\nMy oh my\nI wish I had thought this through\nOne last time"}
+            </blockquote>
+          </section>
+          <div className="record-nav">
+            <Link to="/poetry">{"\u2190"} All Poetry</Link>
+            <Link to="/record/010">Nerves of a Harp {"\u2192"}</Link>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   if (id === "009") {
     return (
       <section className="page-section poetry-reading-page">\n        <style>{poemTypeStyles}</style>
