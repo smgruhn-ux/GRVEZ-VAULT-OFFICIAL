@@ -100,6 +100,7 @@ export function ManuscriptsPage() {
       <style>{stormStyles}</style>
       <div className="page-content">
         <Breadcrumb items={[{label:"Archive",to:"/archive"},{label:"Manuscripts"}]} />
+        <p style={{margin:"1rem 0",fontSize:".82rem"}}>Looking for Sheldyn Gruhn’s poetry? <Link to="/poetry" style={{color:"#e2e4df",textDecoration:"underline"}}>Visit the author portfolio and Written Ruins →</Link></p>
         <header className="storm-hero">
           <p className="storm-kicker">GRVEZ VAULT / SHELDYN GRUHN</p>
           <h1 className="storm-title"><span>The Written</span><span>Works</span></h1>
