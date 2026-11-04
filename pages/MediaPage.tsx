@@ -1,14 +1,69 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Breadcrumb } from "../Breadcrumb";
-import { HeroArtwork } from "../HeroArtwork";
 
-const Integration = ({ image, alt, label }: { image: string; alt: string; label: string }) => <div className="visdoc-integration-card"><img src={image} alt={alt} loading="lazy" /><div className="visdoc-integration-label">{label}</div></div>;
-
+const exhibitions = [
+  { slug:"visual-evolution", number:"01", category:"CHRONOLOGICAL RECORD", title:"Visual Evolution", image:"/Visual Evolution Front Cover.PNG", description:"A visual chronology of documented tattoos and recurring motifs, with later interpretations kept distinct from their source records.", span:"wide" },
+  { slug:"death-of-deceit", number:"02", category:"CONCEPT ART · MAY 2026", title:"Death of Deceit", image:"/New death of deceit card photo.JPG", description:"A documented tattoo concept exploring wings, skeletal forms, binding and transformation." },
+  { slug:"raven-motif", number:"03", category:"CHARACTER & MOTIF", title:"Raven Motif", image:"/RAVEN MOTIF FRONT COVER.png", description:"The visual evolution of Murmur, the raven companion and watcher." },
+  { slug:"black-maw", number:"04", category:"CHARACTER & MOTIF", title:"Black Maw", image:"/BLACK MAW.png", description:"The black dog companion associated with DMONIX." },
+  { slug:"omega-development", number:"05", category:"SYMBOL DEVELOPMENT", title:"Omega Development", image:"/omega-reference-card.webp", description:"The development of the Omega mark, fracture motifs and geometric studies." },
+  { slug:"recurring-symbols", number:"06", category:"VISUAL CROSS-REFERENCE", title:"Recurring Symbols", image:"/gizzy-alpha-dossier.webp", description:"Recurring forms across the GRVEZ visual language and their later interpretations." },
+  { slug:"dmonix-tattoo-record", number:"07", category:"TATTOO ARCHIVE", title:"DMONIX Tattoo Motifs", image:"/dmonix-jerry-one-eyed-skull.webp", description:"Source photographs and subsequent comparisons of recurring visual elements." }
+];
+const styles = `
+.visual-gallery {background:#090b10;color:#e6e8ed;min-height:100vh;}
+.visual-gallery .page-content {max-width:1320px;}
+.visual-gallery .visual-hero {position:relative;isolation:isolate;min-height:560px;display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(2rem,6vw,6rem);margin:1rem 0 4rem;overflow:hidden;background:#111620;border:1px solid #353d49;}
+.visual-gallery .visual-hero:before {content:"";position:absolute;inset:0;z-index:-2;background:url('/Visual Evolution Front Cover.PNG') center 40%/cover no-repeat;opacity:.5;filter:grayscale(1);}
+.visual-gallery .visual-hero:after {content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(5,7,11,.95),rgba(5,7,11,.4) 85%),linear-gradient(0deg,#080b10,transparent 75%);}
+.visual-gallery .visual-kicker {color:#aab5c7;font-size:.7rem;letter-spacing:.26em;text-transform:uppercase;font-weight:500;}
+.visual-gallery .visual-title {font-family:'Forum',Georgia,serif!important;font-weight:400!important;font-size:clamp(4rem,10vw,9rem);line-height:.91;margin:1.3rem 0 1.5rem;letter-spacing:.015em;}
+.visual-gallery .visual-lede {max-width:640px;color:#d2d7e1;font:400 clamp(1.15rem,2.2vw,1.5rem)/1.55 'Forum',Georgia,serif;}
+.visual-gallery .visual-heading {display:flex;align-items:end;justify-content:space-between;gap:1rem;margin:3.5rem 0 1.5rem;border-bottom:1px solid #39414d;padding-bottom:1.2rem;}
+.visual-gallery .visual-heading h2 {font:400 clamp(2.6rem,5vw,4.6rem)/1.1 'Forum',Georgia,serif!important;margin:.5rem 0 0;}
+.visual-gallery .visual-count {font-size:.75rem;letter-spacing:.17em;color:#9ca7b7;}
+.visual-gallery .visual-grid {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.4rem;margin-bottom:4rem;}
+.visual-gallery .visual-card {position:relative;display:flex;flex-direction:column;min-width:0;text-decoration:none;color:inherit;border:1px solid #353e4b;background:#121720;overflow:hidden;transition:transform .25s,border-color .25s,box-shadow .25s;}
+.visual-gallery .visual-card:hover,.visual-gallery .visual-card:focus-visible {transform:translateY(-5px);border-color:#aab6c7;box-shadow:0 18px 45px #0007;}
+.visual-gallery .visual-card.wide {grid-column:1/-1;display:grid;grid-template-columns:1.25fr 1fr;min-height:420px;}
+.visual-gallery .visual-art {position:relative;aspect-ratio:16/10;overflow:hidden;background:#1c222c;}
+.visual-gallery .wide .visual-art {aspect-ratio:auto;min-height:420px;}
+.visual-gallery .visual-art img {display:block;width:100%;height:100%;object-fit:cover;filter:saturate(.7);transition:transform .45s,filter .45s;}
+.visual-gallery .visual-card:hover img {transform:scale(1.035);filter:saturate(.95);}
+.visual-gallery .visual-art:after {content:"";position:absolute;inset:0;border:12px solid #080b1012;pointer-events:none;}
+.visual-gallery .visual-copy {padding:clamp(1.4rem,3vw,2.7rem);display:flex;flex-direction:column;align-items:flex-start;justify-content:center;flex:1;}
+.visual-gallery .visual-copy h3 {font:400 clamp(2rem,4vw,3.4rem)/1.05 'Forum',Georgia,serif!important;margin:1rem 0;}
+.visual-gallery .visual-copy p {color:#b8c0cc;font-size:.95rem;line-height:1.7;max-width:480px;}
+.visual-gallery .visual-open {margin-top:auto;padding-top:1.5rem;font-size:.7rem;letter-spacing:.19em;color:#e0e5ed;}
+.visual-gallery .visual-method {border-top:1px solid #39414d;padding:3rem 0 5rem;max-width:850px;}
+.visual-gallery .visual-method h2 {font:400 clamp(2.2rem,4vw,3.5rem) 'Forum',Georgia,serif!important;}
+.visual-gallery .visual-method p {line-height:1.8;color:#b8c0cc;}
+@media(max-width:760px){.visual-gallery .visual-hero{min-height:470px;padding:2rem;margin-bottom:2rem}.visual-gallery .visual-grid{grid-template-columns:1fr}.visual-gallery .visual-card.wide{grid-column:auto;display:flex;min-height:0}.visual-gallery .wide .visual-art{min-height:0;aspect-ratio:16/10}.visual-gallery .visual-heading{margin-top:2.5rem}.visual-gallery .visual-title{font-size:clamp(3.7rem,13vw,6rem)}}
+`;
 export function MediaPage() {
-  useEffect(() => { document.title = "Visual Documentation | GRVEZ VAULT"; return () => { document.title = "GRVEZ VAULT | Music · Archive · Manuscripts · Media"; }; }, []);
-  return <section className="page-section manuscripts-page media-page" aria-labelledby="media-heading">
-    <div className="page-hero"><HeroArtwork image="/Visual Evolution Front Cover.PNG" alt="GRVEZ VAULT visual documentation" loading="eager" clean /></div>
-    <div className="page-content"><Breadcrumb items={[{ label: "Archive", to: "/archive" }, { label: "Visual Documentation" }]} /><p className="eyebrow">ARCHIVE RECORD // 003</p><h1 id="media-heading">Visual Documentation</h1><p className="page-description">Artwork. Photography. Symbols. Concept art. Visual evidence preserved and catalogued throughout the archive's investigation.</p><section className="archive-note"><p className="eyebrow">SOURCE-GROUNDED RESTORATION</p><h2>Evidence separated by status.</h2><p>Documented artifacts, later interpretation, and unresolved questions remain visibly distinct. The archive preserves what each source establishes without turning later readings into fact.</p></section><div className="visdoc-tier-label"><p className="eyebrow">DOCUMENTED ARTIFACTS</p><h2>Primary Evidence</h2></div><Link to="/media/visual-evolution" className="visdoc-exhibit-featured"><img src="/Visual Evolution Front Cover.PNG" alt="Visual Evolution front cover" loading="lazy" /><div className="visdoc-exhibit-copy"><p className="eyebrow">CHRONOLOGICAL VISUAL RECORD</p><h3>Visual Evolution</h3><p>Chronological visual record tracing documented tattoo and motif development across the surviving source material.</p><div className="visdoc-absorbed"><strong>Documented Motifs</strong>Water / Fish · Hourglass · Butterfly / Roses · Ariel / Mirror · Cosmic / Galaxy · Cosmic Spiral · Handless Clock</div><div className="visdoc-status matched">DOCUMENTED ARTIFACT</div></div></Link><div className="visdoc-grid" style={{ marginTop: "1.25rem" }}><Link to="/media/death-of-deceit" className="visdoc-exhibit-card"><p className="eyebrow">CONCEPT ART</p><h3>Death of Deceit</h3><img src="/New death of deceit card photo.JPG" alt="Death of Deceit, May 21, 2026" loading="lazy" /><p>May 21, 2026 tattoo concept. Two days before the May 23 epiphany.</p><div className="visdoc-status matched">DOCUMENTED ARTIFACT</div></Link><Link to="/media/raven-motif" className="visdoc-exhibit-card"><p className="eyebrow">SYMBOL / MOTIF</p><h3>Raven Motif</h3><img src="/RAVEN MOTIF FRONT COVER.png" alt="Raven Motif" loading="lazy" /><p>The Murmur, Gizzy's recurring Raven companion and watcher, through a visual progression toward black wings.</p><div className="visdoc-status matched">DOCUMENTED ARTIFACT</div></Link><Link to="/media/black-maw" className="visdoc-exhibit-card"><p className="eyebrow">COMPANION FIGURE</p><h3>Black Maw</h3><img src="/BLACK MAW.png" alt="Black Maw" loading="lazy" /><p>The black dog and DMONIX's companion, held as a distinct recurring presence in the visual system.</p><div className="visdoc-status matched">DOCUMENTED ARTIFACT</div></Link></div><div className="visdoc-tier-label"><p className="eyebrow">SYMBOL DEVELOPMENT & SYSTEM RELATIONSHIPS</p><h2>Later Interpretation</h2></div><div className="visdoc-grid"><Link to="/media/omega-development" className="visdoc-exhibit-card"><p className="eyebrow">SYMBOL DEVELOPMENT</p><h3>Omega Development</h3><p>Early ring/circle attempts, early eight-spoke investigation, and later Omega/fracture development.</p><div className="visdoc-integration"><Integration image="/omega-reference-card.webp" alt="The Omega reference card" label="THE OMEGA" /><Integration image="/omega-mark-reference.webp" alt="Omega Mark reference graphic" label="OMEGA MARK" /></div><div className="visdoc-status matched">LATER INTERPRETATION</div></Link><Link to="/media/recurring-symbols" className="visdoc-exhibit-card"><p className="eyebrow">CROSS-REFERENCE</p><h3>Recurring Symbols</h3><p>Cross-reference of recurring forms, symbols, and later system relationships documented across the archive.</p><div className="visdoc-integration"><Integration image="/dmonix-omega-dossier.webp" alt="DMONIX Omega dossier" label="DMONIX / Ω" /><Integration image="/gizzy-alpha-dossier.webp" alt="Gizzy Graves Alpha dossier" label="GIZZY GRAVES / α" /></div><div className="visdoc-status matched">LATER INTERPRETATION</div></Link></div><div className="visdoc-grid" style={{ marginTop: "1.25rem" }}><Link to="/media/dmonix-tattoo-record" className="visdoc-exhibit-card"><p className="eyebrow">TATTOO / MOTIF RECORD</p><h3>DMONIX / Jerry Tattoo Motif Record</h3><p>A visual record of recurring tattoo motifs documented across the supplied source photographs.</p><div className="visdoc-integration"><Integration image="/dmonix-jerry-one-eyed-skull.webp" alt="One-eyed skull tattoo" label="ONE-EYED SKULL" /><Integration image="/dmonix-jerry-anubis.webp" alt="Anubis tattoo" label="ANUBIS" /></div><div className="visdoc-status matched">DOCUMENTED ARTIFACTS</div></Link></div><div className="visdoc-methodology"><p className="eyebrow">ARCHIVAL METHODOLOGY</p><h2>Restoration ongoing.</h2><p>Dates, context, and meaning remain limited to what the source records establish. Hourglass and Ariel/Mirror mappings stay flagged where the archive marks them uncertain.</p></div></div>
+  useEffect(() => { document.title="Visual Projects | GRVEZ VAULT"; }, []);
+  return <section className="page-section visual-gallery" aria-labelledby="visual-heading">
+    <style>{styles}</style>
+    <div className="page-content">
+      <Breadcrumb items={[{label:"Archive",to:"/archive"},{label:"Visual Projects"}]}/>
+      <header className="visual-hero">
+        <p className="visual-kicker">GRVEZ VAULT · ART & VISUAL ARCHIVE</p>
+        <h1 className="visual-title" id="visual-heading">VISUAL<br/>PROJECTS</h1>
+        <p className="visual-lede">A collection of original artwork, evolving symbols, character studies and visual records. Each piece holds its own place in the archive.</p>
+      </header>
+      <div className="visual-heading"><div><p className="visual-kicker">EXPLORE THE COLLECTION</p><h2>Selected Works</h2></div><span className="visual-count">07 PROJECTS</span></div>
+      <div className="visual-grid">
+        {exhibitions.map(item=><Link to={`/media/${item.slug}`} key={item.slug} className={`visual-card ${item.span==="wide"?"wide":""}`}>
+          <div className="visual-art"><img src={item.image} alt={item.title} loading="lazy"/></div>
+          <div className="visual-copy">
+            <span className="visual-kicker">{item.number} / {item.category}</span>
+            <h3>{item.title}</h3><p>{item.description}</p>
+            <span className="visual-open">EXPLORE PROJECT ↗</span>
+          </div>
+        </Link>)}
+      </div>
+      <section className="visual-method"><p className="visual-kicker">ABOUT THE ARCHIVE</p><h2>Art first. Context preserved.</h2><p>These projects include both original visual artifacts and later studies of recurring imagery. Source dates and original context are distinguished from interpretations developed afterward. The archive documents the evolution without presenting visual similarities as proof of their cause.</p></section>
+    </div>
   </section>;
 }
