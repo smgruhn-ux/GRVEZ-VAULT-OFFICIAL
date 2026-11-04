@@ -21,6 +21,7 @@ export const navigation: NavItem[] = [
     children: [
       { path: '/archive', label: 'Overview' },
       { path: '/manuscripts', label: 'Manuscripts' },
+      { path: '/poetry', label: 'Sheldyn Gruhn · Poetry' },
       { path: '/media', label: 'Visual Documentation' },
     ]
   },
