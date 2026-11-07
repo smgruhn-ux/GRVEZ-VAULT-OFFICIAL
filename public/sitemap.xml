@@ -1,46 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
-  <url>
-    <loc>https://grvezvaultofficial.us/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-
-  <url>
-    <loc>https://grvezvaultofficial.us/music</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <url>
-    <loc>https://grvezvaultofficial.us/archive</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <url>
-    <loc>https://grvezvaultofficial.us/manuscripts</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://grvezvaultofficial.us/media</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://grvezvaultofficial.us/about</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://grvezvaultofficial.us/contact</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
+  <url><loc>https://grvezvaultofficial.us/</loc></url>
+  <url><loc>https://grvezvaultofficial.us/about</loc></url>
+  <url><loc>https://grvezvaultofficial.us/about/gizzy-graves</loc></url>
+  <url><loc>https://grvezvaultofficial.us/about/dmonix</loc></url>
+  <url><loc>https://grvezvaultofficial.us/music</loc></url>
+  <url><loc>https://grvezvaultofficial.us/dxxd-grvez</loc></url>
+  <url><loc>https://grvezvaultofficial.us/archive</loc></url>
+  <url><loc>https://grvezvaultofficial.us/manuscripts</loc></url>
+  <url><loc>https://grvezvaultofficial.us/poetry</loc></url>
+  <url><loc>https://grvezvaultofficial.us/media</loc></url>
+  <url><loc>https://grvezvaultofficial.us/media/raven-motif</loc></url>
+  <url><loc>https://grvezvaultofficial.us/media/black-maw</loc></url>
+  <url><loc>https://grvezvaultofficial.us/relational-continuity</loc></url>
+  <url><loc>https://grvezvaultofficial.us/films</loc></url>
+  <url><loc>https://grvezvaultofficial.us/vaultline</loc></url>
+  <url><loc>https://grvezvaultofficial.us/after-dark-dwellings</loc></url>
+  <url><loc>https://grvezvaultofficial.us/after-dark-dwellings/guides</loc></url>
+  <url><loc>https://grvezvaultofficial.us/after-dark-dwellings/7-ways-to-make-a-dark-room-feel-expensive</loc></url>
+  <url><loc>https://grvezvaultofficial.us/after-dark-dwellings/guides/layered-lighting-for-dark-interiors</loc></url>
+  <url><loc>https://grvezvaultofficial.us/after-dark-dwellings/guides/dark-bedroom-without-feeling-heavy</loc></url>
+  <url><loc>https://grvezvaultofficial.us/after-dark-dwellings/guides/black-kitchen-without-feeling-flat</loc></url>
+  <url><loc>https://grvezvaultofficial.us/after-dark-dwellings/guides/dark-bathroom-that-feels-expensive</loc></url>
+  <url><loc>https://grvezvaultofficial.us/after-dark-dwellings/guides/dark-home-office-without-feeling-closed-in</loc></url>
+  <url><loc>https://grvezvaultofficial.us/after-dark-dwellings/guides/small-dark-spaces-that-still-feel-open</loc></url>
+  <url><loc>https://grvezvaultofficial.us/after-dark-dwellings/guides/dark-living-room-feel-expensive</loc></url>
+  <url><loc>https://grvezvaultofficial.us/after-dark-dwellings/guides/black-and-stone-interiors</loc></url>
+  <url><loc>https://grvezvaultofficial.us/after-dark-dwellings/guides/dark-entryway-lighting-mirrors-contrast</loc></url>
+  <url><loc>https://grvezvaultofficial.us/after-dark-dwellings/curated-finds</loc></url>
+  <url><loc>https://grvezvaultofficial.us/after-dark-dwellings/about</loc></url>
+  <url><loc>https://grvezvaultofficial.us/after-dark-dwellings/affiliate-disclosure</loc></url>
+  <url><loc>https://grvezvaultofficial.us/after-dark-dwellings/faq</loc></url>
+  <url><loc>https://grvezvaultofficial.us/after-dark-dwellings/privacy-policy</loc></url>
+  <url><loc>https://grvezvaultofficial.us/after-dark-dwellings/terms-of-use</loc></url>
+  <url><loc>https://grvezvaultofficial.us/contact</loc></url>
+  <url><loc>https://grvezvaultofficial.us/faq</loc></url>
+  <url><loc>https://grvezvaultofficial.us/privacy-policy</loc></url>
+  <url><loc>https://grvezvaultofficial.us/terms-of-use</loc></url>
 </urlset>
